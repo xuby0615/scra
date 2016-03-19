@@ -7,7 +7,7 @@ class Model {
 		$this->_di=Factory::DI();
 	}
 	
-	public function get_conn(){
+	public function conn(){
 		return $this->_di->get('mysql');
 	}
 }

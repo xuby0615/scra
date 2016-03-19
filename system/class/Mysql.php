@@ -15,9 +15,10 @@ class Mysql{
 		}catch(exception $e){
 			$e->getMessage();
 		}
-		
-		$this->conn->query("set character set '".$config['db_charset']."'");
-		$this->conn->query("set names '".$config['db_charset']."'");
+		if (!empty($config['db_charset'])){
+			$this->conn->query("set character set '".$config['db_charset']."'");
+			$this->conn->query("set names '".$config['db_charset']."'");
+		}
 	}
 
 	/*
@@ -116,7 +117,18 @@ class Mysql{
 	 * return boolean
 	 */
 	public function delete($value,$table){
-		
+		$array = array();
+		foreach ($value as $key=>$v){
+				array_push($array, $key." = '".$v."'");
+				$condition = implode(' and ', $array);
+		}
+		$sql = "delete from ".$table." where ".$condition;
+		$result = mysqli_query($this->conn, $sql);
+		if ($result){
+			return true;
+		}else{
+			return false;
+		}
 	}
 
 }

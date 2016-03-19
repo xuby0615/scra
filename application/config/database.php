@@ -1,16 +1,15 @@
 <?php
 /*
  * DataBase Configuration File
- * We Give to Dev Five Default Options to Config
+ * We Give to Developer Five Default Options to Config
  * Also,You can extends array $config like this :
- * 		$config['db_option'] = value;
- * But in v1.0,just five options you can change
+ * 		$config['db_option'] = value; 
  */
 
 $config = array(
-	'db_url' => 'localhost',
-	'db_username' => 'root',
-	'db_password' => 'root',
-	'db_database' => 'test',
-	'db_charset' => 'utf8'	
+	'db_url' => '',
+	'db_username' => '',
+	'db_password' => '',
+	'db_database' => '',
+	'db_charset' => ''	
 );

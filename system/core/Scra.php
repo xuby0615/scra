@@ -5,10 +5,10 @@ class Scra{
 	private $_di;
 	private $_action;
 
-	function __construct($controller,$action,$di){
-		Di::set('controller',Factory::controller($controller));
-		$this->_di = $di;
+	function __construct($controller,$action){
+		$this->_di = Factory::DI();
 		$this->_action = $action;
+		Di::set('controller',Factory::controller($controller));
 	}
 
 	public function index(){
@@ -24,7 +24,7 @@ class Scra{
 	}
 	
 	public function miss_method(){
-		echo 'No Selected Action';
+		echo 'No Action Selected';
 	}
 
 }
