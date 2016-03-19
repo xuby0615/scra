@@ -7,7 +7,11 @@
 		}
 
 		public static function get($key){
-			return self::$objects[$key];
+			if (array_key_exists($key, self::$objects)){
+				return self::$objects[$key];
+			}else{
+				echo 'class:'.$key.'does not registration.';
+			}
 		}
 
 		public static function delete($key){
