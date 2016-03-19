@@ -10,7 +10,7 @@
 			if (array_key_exists($key, self::$objects)){
 				return self::$objects[$key];
 			}else{
-				echo 'class:'.$key.'does not registration.';
+				echo 'class:"'.$key.'" does not registration.';
 			}
 		}
 
