@@ -19,7 +19,7 @@ if (PHP_VERSION < 5.4){
 	define('SYS_PATH', 'system/');
 	
 	//加载默认配置文件，和上方的路径信息不能颠倒
-	require_once APP_PATH.'config/const.php';
+	require_once APP_PATH.'config/config.php';
 	
 	//加载路由文件
 	require_once SYS_PATH.'core/Route.php';

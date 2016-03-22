@@ -12,7 +12,8 @@ class Index extends Controller{
 	}
 	
 	public function home(){
-		include V.'index.php';
+		$smarty = $this->smarty();
+		$smarty->display('index.php');
 	}
 
 }

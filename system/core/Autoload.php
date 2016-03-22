@@ -14,6 +14,13 @@ class Autoload{
             require_once($class_file);     
         }     
     }
+    
+    public static function sys_smarty_loader(){
+    	$class_file = SYS_PATH.'smarty\libs\Smarty.class.php';
+    	if (file_exists($class_file)){
+    		require_once($class_file);
+    	}
+    }
 
     public static function app_controller_loader($classname){     
         $class_file = APP_PATH.'controller\\'.$classname.".php";
