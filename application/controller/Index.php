@@ -2,7 +2,7 @@
 /*
  *  Defalut Controller  
  *  You can change default controller in file: 
- * 		application/config/const.php
+ * 		application/config/config.php
  */
 
 class Index extends Controller{
