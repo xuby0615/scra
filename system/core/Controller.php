@@ -1,10 +1,7 @@
 <?php
 class Controller {
 	
-	protected $_di;
-	
 	function __construct(){
-		$this->_di = Factory::DI();
 		DI::set('mail', Factory::mail());
 		DI::set('smarty', Factory::smarty());
 	}
@@ -22,5 +19,4 @@ class Controller {
 	}
 	
 }
-
 ?>

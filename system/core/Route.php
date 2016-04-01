@@ -3,8 +3,21 @@ class Route{
 	
 	private $_route;
 	
+	//sql关键字
+	private static $str_sql = array('>','<','=','!','+','-','*','/','"','\'',' ','_','%','.',',',';','(',')','\\','0x','group','order','by',
+									'desc','asc','limit','count','select','update','delete','insert','create','drop','table','database','and',
+									'or','when','case','else','then','where','from','in','like','information','schema','mysql','charset',
+									'characterset','len','end');
+	
 	function __construct($route){
 		$this->_route = $route;
+	}
+	
+	private function kill_sql_keywords($string){
+		foreach (self::$str_sql as $keywords) {
+			$string = str_replace($keywords, '', strtolower($string));
+		}
+		return $string;
 	}
 	
 	private function vali_route(){
@@ -23,7 +36,7 @@ class Route{
 				$param = explode('&', $route[1]);
 				foreach ($param as $a){
 					$b = explode('=', $a);
-					$_GET[$b[0]] = $b[1];
+					$_GET[$b[0]] = $this->kill_sql_keywords($b[1]);
 				}
 			}
 			return explode('/', $route[0]);
