@@ -5,7 +5,7 @@
  * @start_time				2016-2-18 13:53:25
  * @since					Version 1.0.0
  * @last_update_start_time 	2016年3月19日09:53:56
- * @last_update_end_time	2016年3月19日11:44:27
+ * @last_update_end_time	2016年4月1日15:06:24
  */
       
 if (PHP_VERSION < 5.4){
