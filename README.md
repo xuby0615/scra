@@ -1,27 +1,44 @@
 @作者		徐斌洋
+
 @版本信息		Version 1.1.0
+
 @框架名称		Scra
 
 一、环境信息
+
 	1、PHP版本	5.4以上
+	
 	2、Apache版本	2.4
+	
 	3、MySQL版本	5.6
 
 二、入口文件
+
 	index.php
+	
 	在入口文件中：
+	
 	1、可以自定义修改应用目录名：application/，不建议修改系统目录system/
+	
 	2、入口文件中，加载配置文件和路由文件
+	
 	3、我们建议您，在入口文件中，无需做修改
 	
+	
 三、路由信息
+
 	url访问方式：http://www.example.com/controller/foo?param1=val1&param2=val2
+	
 	同时，我们在通过GET方式传递参数时，做了简单的sql关键词过滤，防止sql注入
+	
 	V1.0.0不支持自定义路由
 
 四、配置文件
+
 	1、系统配置文件
+	
 		位于：application/config/config.php
+		
 		为了简化开发者加载一些常用静态文件库
 	
 		我们为您提供了：
@@ -45,9 +62,11 @@
 		Scra采用Smarty模板引擎，详细配置信息请参看该文件
 		
 五、缓存文件
+
 	位于application/cache下，用于存储smarty引擎产生的缓存文件以及验证码图片
 	
 六、控制器文件
+
 	位于application/controller文件，控制器类必须扩展自Controller类
 	
 	您可以在Example控制器中，定义foo方法：
@@ -65,6 +84,7 @@
 	就可以在页面中显示“Hello World”
 	
 六、模型读取
+
 	模型文件位于application/model，模型类必须扩展自Model类
 	
 	控制器中加载模型方式：DI::set('model',Factory::model($modelname));
@@ -73,11 +93,14 @@
 	系统为您提供了简单的AR模型
 	
 七、模板加载
+
 	位于application/view文件
+	
 	Scra使用Smarty进行模板加载，使用方式参见smarty使用方式
 	
 八、第三方类
-	在V1.0.0中，我们为您提供了两种常见类
+
+	在V1.1.0中，我们为您提供了三种常见类
 	
 	1、邮件类：
 		在控制器中，您可以直接使用$this->mail()，来实例化邮件类。
