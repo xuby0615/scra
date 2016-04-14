@@ -13,6 +13,7 @@ class Index extends Controller{
 	
 	public function home(){
 		$smarty = $this->smarty();
+		$smarty->assign('server',$_SERVER['SERVER_SOFTWARE']);
 		$smarty->display('index.php');
 	}
 

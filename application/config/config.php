@@ -38,6 +38,11 @@ define('Bootstrap_CSS','http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.
 define('FA_CSS','http://cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css');
 
 /*
+ * Font Path
+*/
+define('Font_PATH', BASE_URL.'statics/font/');
+
+/*
  * Image Path
  */
 define('IMG_PATH', BASE_URL.'statics/image/');

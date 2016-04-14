@@ -45,7 +45,7 @@
 		Scra采用Smarty模板引擎，详细配置信息请参看该文件
 		
 五、缓存文件
-	位于application/cache下，用于存储smarty引擎产生的缓存文件
+	位于application/cache下，用于存储smarty引擎产生的缓存文件以及验证码图片
 	
 六、控制器文件
 	位于application/controller文件，控制器类必须扩展自Controller类
@@ -81,7 +81,7 @@
 	
 	1、邮件类：
 		在控制器中，您可以直接使用$this->mail()，来实例化邮件类。
-		
+		配置信息：
 	    $this->mail()->IsSMTP(); 								//选择SMTP服务
 	    $this->mail()->CharSet='UTF-8'; 						//设置邮件的字符编码，这很重要，不然中文乱码 
 	    $this->mail()->SMTPAuth = true; 						//开启认证 
@@ -114,3 +114,20 @@
 		$page_size:每页数
 		$total:总数
 		$page:当前页数
+		
+	3、验证码类
+	使用Scra的验证码类，需开启GD2扩展
+	在控制器中，您可以使用scra提供的验证码类
+	配置信息，四项配置信息是必填的：
+		$config = array(
+			'codelen' => 4,		//生成验证码位数
+			'width'	  => 100,	//验证码图片长度
+			'height'  => 50,	//验证码图片宽度
+			'fontsize'=> 20		//验证码文字大小
+		);
+	注册验证码类：
+		DI::set('captcha',Factory::captcha($config));
+	实例化验证码类：
+		$captcha = DI::get('captcha');
+	调用doimg()方法，生成验证码；
+	调用getCode()方法，获取生成验证码的路径和对应验证码

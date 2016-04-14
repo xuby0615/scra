@@ -35,6 +35,11 @@ class Factory{
 		return new PHPMailer();
 	}
 	
+	//实例化验证码类
+	public static function captcha($config){
+		return new Captcha($config);
+	}
+	
 	//实例化smarty类
 	public static function smarty(){
 		include APP_PATH.'config/smarty.php';

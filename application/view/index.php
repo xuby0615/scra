@@ -8,6 +8,9 @@
 <body>
 <h1 align="center">Welcome to use Scra Framework!!!</h1>
 <hr>
-<p align="center">Power by <?=$_SERVER['SERVER_SOFTWARE']?></p>
+<p align="center">Power by {$server}</p>
+{nocache}
+<img alt="code" src="{$url}">
+{/nocache}
 </body>
 </html>
