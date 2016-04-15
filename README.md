@@ -83,7 +83,7 @@
 	然后，您可以在地址栏中访问：http://www.example.com/example/foo
 	就可以在页面中显示“Hello World”
 	
-六、模型读取
+七、模型读取
 
 	模型文件位于application/model，模型类必须扩展自Model类
 	
@@ -92,13 +92,13 @@
 	
 	系统为您提供了简单的AR模型
 	
-七、模板加载
+八、模板加载
 
 	位于application/view文件
 	
 	Scra使用Smarty进行模板加载，使用方式参见smarty使用方式
 	
-八、第三方类
+九、第三方类
 
 	在V1.1.0中，我们为您提供了三种常见类
 	
@@ -125,7 +125,7 @@
 	    $this->mail()->IsHTML(true); 							//经由html
 	    $this->mail()->Send(); 									//发送邮件
 	          
-	          异常类:
+	          异常处理:
 		//phpmailerException $e 
 	
 	2、分页类：
