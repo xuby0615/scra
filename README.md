@@ -1,4 +1,4 @@
-@作者		徐斌洋
+@作者			徐斌洋
 
 @版本信息		Version 1.1.0
 
@@ -154,3 +154,26 @@
 		$captcha = DI::get('captcha');
 	调用doimg()方法，生成验证码；
 	调用getCode()方法，获取生成验证码的路径和对应验证码
+	
+	4、文件上传类
+		Scra在文件上传中使用了AjaxFileUpload.js文件，支持多文件上传
+		在头文件中引用<script src="<?=UPLOAD_JS?>" type="text/javascript" ></script>即可
+		
+		控制器中：
+		写入配置文件：
+		$config = array(
+			'up_path' => UPLOAD_PATH,	//上传路径，系统自带
+			'up_size' => 10,			//单位：MB，上传文件大小单位为B
+			'up_type' => 'jpg|bmp|exe',	//上传文件格式，以|分割
+			'up_code' => 'GBK'			//文件名编码，防止中文文件名乱码
+		);
+		注册服务：
+			DI::set('upload',Factory::Upload($config));
+		获取服务：
+			$upload = DI::get('upload');
+		文件上传：
+			$result = $upload->doUpload($_FILES);
+			返回值包含字段：
+			code：不为0代表上传失败，调用$upload->errorLog($result)方法，即可查看对应错误信息
+			name：文件名
+			path：上传成功时，返回文件存放路径	
