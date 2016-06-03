@@ -25,6 +25,7 @@ define('V', APP_PATH.'view/');
  * Including Dev's JavaScript File or CDN source
  */
 define('JS_PATH', BASE_URL.'statics/javascript/');
+define('UPLOAD_JS', BASE_URL.'statics/javascript/AjaxUploadFile.js');
 define('jQuery', 'http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js');
 define('AngularJS', 'http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js');
 define('Bootstrap_JS', 'http://apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.min.js');
@@ -50,7 +51,7 @@ define('IMG_PATH', BASE_URL.'statics/image/');
 /*
  * Uploadfile Path
  */
-define('UPLOAD_PATH', BASE_URL.'statics/uploadfile/');
+define('UPLOAD_PATH', 'statics/uploadfile/'.date("Ymd",time()).'/');
 
 /*
  * Init Config

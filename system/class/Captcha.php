@@ -5,7 +5,7 @@
 Class Captcha{
 	
 	//随机因子
-	private static $charset = 'abcdefghkmnprstuvwxyzABCDEFGHKMNPRSTUVWXYZ23456789';
+	private static $charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 	
 	//存储最多数量的验证码
 	private static $max_captcha = 200;

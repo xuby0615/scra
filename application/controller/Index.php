@@ -16,5 +16,4 @@ class Index extends Controller{
 		$smarty->assign('server',$_SERVER['SERVER_SOFTWARE']);
 		$smarty->display('index.php');
 	}
-
 }

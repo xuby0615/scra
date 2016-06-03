@@ -40,6 +40,11 @@ class Factory{
 		return new Captcha($config);
 	}
 	
+	//实例化上传类
+	public static function upload($config){
+		return new Upload($config);
+	} 
+	
 	//实例化smarty类
 	public static function smarty(){
 		include APP_PATH.'config/smarty.php';
