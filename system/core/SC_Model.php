@@ -1,5 +1,5 @@
 <?php
-class Model {
+class SC_Model {
 	private $_di;
 	
 	function __construct(){

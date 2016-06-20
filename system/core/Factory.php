@@ -34,7 +34,7 @@ class Factory{
 	public static function mail(){
 		return new PHPMailer();
 	}
-	
+
 	//实例化验证码类
 	public static function captcha($config){
 		return new Captcha($config);

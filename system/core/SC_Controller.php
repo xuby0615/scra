@@ -1,5 +1,5 @@
 <?php
-class Controller {
+class SC_Controller {
 	
 	function __construct(){
 		DI::set('mail', Factory::mail());
@@ -19,4 +19,5 @@ class Controller {
 	}
 	
 }
+
 ?>

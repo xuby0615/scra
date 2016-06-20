@@ -1,6 +1,6 @@
 @作者			徐斌洋
 
-@版本信息		Version 1.1.0
+@版本信息		Version 1.2.0
 
 @框架名称		Scra
 
@@ -67,10 +67,10 @@
 	
 六、控制器文件
 
-	位于application/controller文件，控制器类必须扩展自Controller类
+	位于application/controller文件，控制器类必须扩展自SC_Controller类
 	
 	您可以在Example控制器中，定义foo方法：
-	class Example extends Controller{
+	class Example extends SC_Controller{
 		function __construct{
 			parent::__construct();
 		}
@@ -85,7 +85,7 @@
 	
 七、模型读取
 
-	模型文件位于application/model，模型类必须扩展自Model类
+	模型文件位于application/model，模型类必须扩展自SC_Model类
 	
 	控制器中加载模型方式：DI::set('model',Factory::model($modelname));
 	使用方式：$model = DI::get('model');
@@ -139,21 +139,21 @@
 		$page:当前页数
 		
 	3、验证码类
-	使用Scra的验证码类，需开启GD2扩展
-	在控制器中，您可以使用scra提供的验证码类
-	配置信息，四项配置信息是必填的：
-		$config = array(
-			'codelen' => 4,		//生成验证码位数
-			'width'	  => 100,	//验证码图片长度
-			'height'  => 50,	//验证码图片宽度
-			'fontsize'=> 20		//验证码文字大小
-		);
-	注册验证码类：
-		DI::set('captcha',Factory::captcha($config));
-	实例化验证码类：
-		$captcha = DI::get('captcha');
-	调用doimg()方法，生成验证码；
-	调用getCode()方法，获取生成验证码的路径和对应验证码
+		使用Scra的验证码类，需开启GD2扩展
+		在控制器中，您可以使用scra提供的验证码类
+		配置信息，四项配置信息是必填的：
+			$config = array(
+				'codelen' => 4,		//生成验证码位数
+				'width'	  => 100,	//验证码图片长度
+				'height'  => 50,	//验证码图片宽度
+				'fontsize'=> 20		//验证码文字大小
+			);
+		注册验证码类：
+			DI::set('captcha',Factory::captcha($config));
+		实例化验证码类：
+			$captcha = DI::get('captcha');
+		调用doimg()方法，生成验证码；
+		调用getCode()方法，获取生成验证码的路径和对应验证码
 	
 	4、文件上传类
 		Scra在文件上传中使用了AjaxFileUpload.js文件，支持多文件上传

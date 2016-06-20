@@ -32,7 +32,7 @@ if (PHP_VERSION < 5.4){
 	$controller = !empty($method[1]) ? $method[1] : DEFAULT_CONTROLLER;
 	
 	//获取方法名称
-	$action = strtolower(isset($method[2]) ? $method[2] : DEFAULT_ACTION);
+	$action = isset($method[2]) ? $method[2] : DEFAULT_ACTION;
 	
 	//加载核心文件
 	require_once SYS_PATH.'core/Scra.php';

@@ -5,7 +5,7 @@
  * 		application/config/config.php
  */
 
-class Index extends Controller{
+class Index extends SC_Controller{
 	
 	function __construct(){
 		parent::__construct();
