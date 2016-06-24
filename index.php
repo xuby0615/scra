@@ -1,11 +1,6 @@
 <?php
 /*
- * @package					Scra
- * @author					Xuby
- * @start_time				2016-2-18 13:53:25
- * @since					Version 1.0.0
- * @last_update_start_time 	2016年3月19日09:53:56
- * @last_update_end_time	2016年4月1日15:06:24
+ * Scra框架入口文件
  */
       
 if (PHP_VERSION < 5.4){
@@ -23,8 +18,8 @@ if (PHP_VERSION < 5.4){
 	
 	//加载路由文件
 	require_once SYS_PATH.'core/Route.php';
-	
-	$route = new Route($_SERVER['REQUEST_URI']);
+
+	$route = new Route;
 	
 	$method = $route->get_route();
 	
@@ -32,7 +27,7 @@ if (PHP_VERSION < 5.4){
 	$controller = !empty($method[1]) ? $method[1] : DEFAULT_CONTROLLER;
 	
 	//获取方法名称
-	$action = isset($method[2]) ? $method[2] : DEFAULT_ACTION;
+	$action = !empty($method[2]) ? $method[2] : DEFAULT_ACTION;
 	
 	//加载核心文件
 	require_once SYS_PATH.'core/Scra.php';

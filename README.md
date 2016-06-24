@@ -1,47 +1,26 @@
-1.2.0的版本有bug，框架路由在处理$_GET时，报错
---------------------------------------------------------------------------
-
-@作者			徐斌洋
-
-@版本信息		Version 1.2.0
-
-@框架名称		Scra
+@作者	徐斌洋
+@版本信息	Version 2.0.0
+@框架名称	Scra
 
 一、环境信息
-
-	1、PHP版本	5.4以上
-	
-	2、Apache版本	2.4
-	
+	1、PHP最低版本 5.4
+	2、Apache版本 2.4
 	3、MySQL版本	5.6
 
 二、入口文件
-
 	index.php
-	
 	在入口文件中：
-	
-	1、可以自定义修改应用目录名：application/，不建议修改系统目录system/
-	
-	2、入口文件中，加载配置文件和路由文件
-	
-	3、我们建议您，在入口文件中，无需做修改
-	
+		1、可以自定义修改应用目录名：application/，不建议修改系统目录system/
+		2、入口文件中，加载配置文件和路由文件
+		3、我们建议您，在入口文件中，无需做修改
 	
 三、路由信息
-
 	url访问方式：http://www.example.com/controller/foo?param1=val1&param2=val2
-	
-	同时，我们在通过GET方式传递参数时，做了简单的sql关键词过滤，防止sql注入
-	
-	V1.1.0不支持自定义路由
+	v2.0.0版本不支持自定义路由
 
 四、配置文件
-
 	1、系统配置文件
-	
 		位于：application/config/config.php
-		
 		为了简化开发者加载一些常用静态文件库
 	
 		我们为您提供了：
@@ -65,13 +44,11 @@
 		Scra采用Smarty模板引擎，详细配置信息请参看该文件
 		
 五、缓存文件
-
-	位于application/cache下，用于存储smarty引擎产生的缓存文件以及验证码图片
+	位于application/cache下，用于存储smarty引擎产生的缓存文件
 	
 六、控制器文件
-
 	位于application/controller文件，控制器类必须扩展自SC_Controller类
-	
+	foo命名规则：param_paramA_paramB，不包含数字
 	您可以在Example控制器中，定义foo方法：
 	class Example extends SC_Controller{
 		function __construct{
@@ -86,28 +63,24 @@
 	然后，您可以在地址栏中访问：http://www.example.com/example/foo
 	就可以在页面中显示“Hello World”
 	
-七、模型读取
-
+六、模型读取
 	模型文件位于application/model，模型类必须扩展自SC_Model类
 	
 	控制器中加载模型方式：DI::set('model',Factory::model($modelname));
 	使用方式：$model = DI::get('model');
 	
-	系统为您提供了简单的AR模型
+	数据库操作，请见数据库类	
 	
-八、模板加载
-
+七、模板加载
 	位于application/view文件
-	
 	Scra使用Smarty进行模板加载，使用方式参见smarty使用方式
 	
-九、第三方类
-
-	在V1.1.0中，我们为您提供了三种常见类
+八、第三方类
+	在V2.0.0中，我们为您提供了四种常见类
 	
 	1、邮件类：
 		在控制器中，您可以直接使用$this->mail()，来实例化邮件类。
-		配置信息：
+		
 	    $this->mail()->IsSMTP(); 								//选择SMTP服务
 	    $this->mail()->CharSet='UTF-8'; 						//设置邮件的字符编码，这很重要，不然中文乱码 
 	    $this->mail()->SMTPAuth = true; 						//开启认证 
@@ -128,7 +101,7 @@
 	    $this->mail()->IsHTML(true); 							//经由html
 	    $this->mail()->Send(); 									//发送邮件
 	          
-	          异常处理:
+	          异常类:
 		//phpmailerException $e 
 	
 	2、分页类：
@@ -157,7 +130,7 @@
 			$captcha = DI::get('captcha');
 		调用doimg()方法，生成验证码；
 		调用getCode()方法，获取生成验证码的路径和对应验证码
-	
+		
 	4、文件上传类
 		Scra在文件上传中使用了AjaxFileUpload.js文件，支持多文件上传
 		在头文件中引用<script src="<?=UPLOAD_JS?>" type="text/javascript" ></script>即可
@@ -176,7 +149,7 @@
 			$upload = DI::get('upload');
 		文件上传：
 			$result = $upload->doUpload($_FILES);
-			返回值包含字段：
+		返回值包含字段：
 			code：不为0代表上传失败，调用$upload->errorLog($result)方法，即可查看对应错误信息
 			name：文件名
-			path：上传成功时，返回文件存放路径	
+			path：上传成功时，返回文件存放路径		
