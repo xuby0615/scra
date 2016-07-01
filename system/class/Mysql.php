@@ -108,7 +108,6 @@ class Mysql{
 				$cond = '%'.$where[1].'%';break;
 		} 
 		$sql = 'select '.$param.' from '.$table.' where '.$where[2].' like "'.$cond.'"';
-		echo $sql; 
 		$object = $this->query($sql);
 		$result = mysqli_fetch_all($object,self::$result_mode[$mode]);
 		return $result;
