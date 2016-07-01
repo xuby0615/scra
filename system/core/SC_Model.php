@@ -7,7 +7,7 @@ class SC_Model {
 		$this->_di=Factory::DI();
 	}
 	
-	public function conn(){
+	protected function conn(){
 		return $this->_di->get('mysql');
 	}
 }

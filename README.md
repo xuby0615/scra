@@ -1,6 +1,10 @@
 @作者	徐斌洋
-@版本信息	Version 2.0.0
+@版本信息	Version 2.1.0
 @框架名称	Scra
+---------------更新日志v2.1.0---------------
+1、更新数据库类，新添加模糊查询和条件查询
+2、增加全局公用函数
+------------------------------
 
 一、环境信息
 	1、PHP最低版本 5.4
@@ -69,13 +73,58 @@
 	控制器中加载模型方式：DI::set('model',Factory::model($modelname));
 	使用方式：$model = DI::get('model');
 	
-	数据库操作，请见数据库类	
+	数据库操作，请见数据库类。
+
+七、数据库类
+	在数据模型中：
+	class UserModel extends SC_Model{
+		protected $_conn;							//设置链接
+		private static $_table = 'tablename';		//设置当前数据表
+		
+		function __construct(){
+			parent::__construct();					
+			$this->_conn = $this->conn();			//获取数据库链接信息
+		}
+	}
 	
-七、模板加载
+	1、获取数据库链接：$this->_conn = $this->conn();
+	2、获取当前表所有信息：$this->_conn->getAll(self::$_table);
+	3、获取带有查询条件的数据：
+		$this->_conn->select($table , $param , $where , $mode)，
+		其中：
+			$table：数据表名，字符串
+			$param：查询字段，数组，array(字段一,字段二,字段三)，如果不传值，默认为*
+			$where：查询条件，数组，array(array(字段一，数值，比较符),array(字段一，数值，比较符))，如果不传值，默认为空
+				其中，比较符为">","<","=","<=",">=","!="
+			$mode：返回模式，0代表返回关联数组，1代表返回数字数组，2代表返回结果集
+	4、获取模糊查询的数据：
+		$this->_conn->getFuzzy($table , $param , $where , $mode = 0)
+			其中：
+			$table：数据表名，字符串
+			$param：查询字段，数组，array(字段一,字段二,字段三)，如果不传值，默认为*
+			$where：查询条件，数组，array(模糊范围，数值，字段),
+				其中，模糊范围可选参数为：
+					left：左模糊，对应sql中：'%value'
+					right：右模糊，对应sql中：'value%'
+					all：全模糊，对应sql中：'%value%'
+			$mode：返回模式，0代表返回关联数组，1代表返回数字数组，2代表返回结果集
+	5、更新数据表：
+		$this->_conn->update($value,$conditoin,$table)
+			其中：
+			$table：数据表名，字符串
+			$value：更新值，数组，array(字段一=>值一,字段二=>值二)
+			$condition：条件，数组，array(字段一=>值一,字段二=>值二)
+	6、删除数据
+		$this->_conn->delete($value,$table)
+			其中：
+			$table：数据表名，字符串
+			$value：条件，数组，array(字段一=>值一,字段二=>值二)
+
+八、模板加载
 	位于application/view文件
 	Scra使用Smarty进行模板加载，使用方式参见smarty使用方式
 	
-八、第三方类
+九、第三方类
 	在V2.0.0中，我们为您提供了四种常见类
 	
 	1、邮件类：

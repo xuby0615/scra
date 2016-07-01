@@ -2,6 +2,7 @@
 class SC_Controller {
 	
 	function __construct(){
+		require_once 'SC_Function.php';
 		DI::set('mail', Factory::mail());
 		DI::set('smarty', Factory::smarty());
 	}
