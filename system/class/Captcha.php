@@ -1,6 +1,6 @@
 <?php
 /*
- * Captcha
+ * 验证码类
  */
 Class Captcha{
 	
@@ -8,7 +8,10 @@ Class Captcha{
 	private static $charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 	
 	//存储最多数量的验证码
-	private static $max_captcha = 200;
+	private static $max_captcha = 99;
+	
+	//默认生成路径
+	private static $captcha_temp = 'statics/captcha';
 		 
     protected   $code;       //验证码  
     protected   $codelen;    //验证码长度  
@@ -27,7 +30,7 @@ Class Captcha{
         $this->width = (!empty($width))?$width:130;
         $this->height = (!empty($height))?$height:50;
         $this->fontsize = (!empty($fontsize))?$fontsize:20;
-        $this->font = dirname(__FILE__).'\..\..\statics\font\elephant.ttf';  
+        $this->font = 'statics\font\elephant.ttf';
     }
   
     //生成背景  
@@ -68,15 +71,14 @@ Class Captcha{
   
     //生成图片信息
     private function outPut() {
-    	$captcha_temp = APP_PATH.'cache/captcha';
-    	if (!file_exists($captcha_temp)){
-    		mkdir($captcha_temp,0777);
+    	if (!file_exists(self::$captcha_temp)){
+    		mkdir(self::$captcha_temp,0777);
     	}
-    	$captcha_num = count(glob(APP_PATH.'cache/captcha/*.*'));
+    	$captcha_num = count(glob(self::$captcha_temp.'/*.*'));
     	if ($captcha_num > self::$max_captcha){
-    		$this->delCaptcha($captcha_temp);
+    		$this->delCaptcha(self::$captcha_temp);
     	}
-    	$url_temp = $captcha_temp.'/'.$this->code.'.png';
+    	$url_temp = self::$captcha_temp.'/'.$this->code.'.png';
         imagepng($this->img,$url_temp);
         imagedestroy($this->img);
         $this->url = $url_temp;
