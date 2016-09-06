@@ -5,7 +5,7 @@
 class Route{
 	
 	private $_route;
-	private static $match_uri = '/^(\/index\.php|\/|\/[a-zA-Z]+\/[a-zA-Z]+|\/[a-zA-Z]+\/[a-zA-Z]+\?.+)$/';
+	private static $match_uri = '/^(\/index\.php|\/|\/[a-zA-Z_]+\/[a-zA-Z_]+|\/[a-zA-Z_]+\/[a-zA-Z_]+\?.+)$/';
 	
 	function __construct(){
 		$param = addslashes(trim($_SERVER['REQUEST_URI']));

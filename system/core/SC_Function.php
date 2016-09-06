@@ -59,4 +59,3 @@ function check_ip($ip){
 	}
 	return true;
 }
-

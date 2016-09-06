@@ -13,14 +13,14 @@ Class Captcha{
 	//默认生成路径
 	private static $captcha_temp = 'statics/captcha';
 		 
-    protected   $code;       //验证码  
-    protected   $codelen;    //验证码长度  
+    protected   $code;       //验证码
+    protected   $codelen;    //验证码长度
     protected   $width;      //宽度  
-    protected   $height;     //高度  
-    protected   $img;        //图形资源句柄  
-    protected   $font;       //指定的字体  
-    protected   $fontsize;   //指定字体大小  
-    protected   $fontcolor;  //指定字体颜色 
+    protected   $height;     //高度
+    protected   $img;        //图形资源句柄
+    protected   $font;       //指定的字体
+    protected   $fontsize;   //指定字体大小
+    protected   $fontcolor;  //指定字体颜色
     protected 	$url;		 //验证码路径
   
     //构造方法初始化  

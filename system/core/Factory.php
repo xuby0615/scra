@@ -1,12 +1,16 @@
 <?php
 /*
  * 工厂类
+ * Error::customError('1024','类不存在',__DIR__.'\Factory.php','15');
  */
 class Factory{
+	public function __construct(){
+		set_error_handler(Error::customError());
+	}
 	
 	//实例化IoC容器
 	public static function DI(){
-		return new Di();
+		return new DI();
 	}
 	
 	//实例化URL传递的控制器

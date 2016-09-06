@@ -13,7 +13,7 @@ class SC_Controller {
 	}
 
 	//解决Ajax跨域问题
-	public function domain(){
+	public function ajax_cron(){
 		header('Access-Control-Allow-Origin: *');
 		header('Access-Control-Allow-Credentials: true');
 		if('OPTIONS' != $_SERVER['REQUEST_METHOD']) return;

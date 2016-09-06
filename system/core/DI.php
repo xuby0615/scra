@@ -3,7 +3,7 @@ class DI{
 	protected static $objects;
 
 	public static function set($key,$object){
-		self::$objects[$key] = $object;
+		return (self::$objects[$key] = $object)?true:false;
 	}
 
 	public static function get($key){

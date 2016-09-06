@@ -12,9 +12,13 @@ class Mysql{
 	 */
 	function __construct($config){
 		try{
-			$this->conn = mysqli_connect($config['db_url'],$config['db_username'],$config['db_password'],$config['db_database']);
+			@$this->conn = mysqli_connect($config['db_url'],$config['db_username'],$config['db_password'],$config['db_database']);
+			if (!$this->conn) {
+				$message = 'Connected to mysql server faild with error config!';
+				throw new Exception($message);
+			}
 		}catch(exception $e){
-			$e->getMessage();
+			exit($e->getMessage());
 		}
 		if (!empty($config['db_charset'])){
 			$this->conn->query("set character set '".$config['db_charset']."'");
